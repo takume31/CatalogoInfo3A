@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter, Routes, Router, Route} from 'react-router-dom'
-import Home from './1-AtividadeCriarComponente'
-import SegundaAtividade from './2-AtividadeCriarEstadoLista'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import PrimeiraAtividade from './1-AtividadeCriarComponente/index'
+import SegundaAtividade from './2-AtividadeCriarEstadoLista/index'
 import TerceiraAtividade from './3-AtividadeListarObjetos'
 import QuartaAtividade from './4-AtividadeCriarFuncaoAdicionar'
 import QuintaAtividade from './5-AtividadeCriarBotaoAdicionar'
@@ -14,9 +14,8 @@ import App from './App'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-        <Routes>
-        <Router path='/app' element={<App/>}/>
-              <Route path='/AtividadeCriarComponente' element={<Home/>}/>
+        <Routes element={<App/>} path='/'>
+              <Route element={<PrimeiraAtividade/>} path='/primeiraAtividade'/>
               <Route element={<SegundaAtividade/>} path='/segundaAtividade'/>
               <Route element={<TerceiraAtividade/>} path='/terceiraAtividade'/>
               <Route element={<QuartaAtividade/>} path='/quartaAtividade'/>

@@ -1,3 +1,7 @@
 export default function app(){
-    const remo
+    return (
+        <div>
+            <h1>Anime</h1>
+        </div>
+    )
 }

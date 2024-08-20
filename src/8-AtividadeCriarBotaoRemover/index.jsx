@@ -38,3 +38,66 @@
 // Passe o identificador (`id`) do item como parâmetro para `removerItemPedidos`, o mesmo que você usa no `map`.
 // No conteúdo do botão, coloque o texto "Remover".
 
+// Dentro do componente, crie a função `removerItemPedidos`.
+// A função recebe um parâmetro `id`, que é o identificador do item a ser removido.
+// Crie uma variável `listaAux` para armazenar a lista filtrada sem o item com o `id` fornecido.
+// Utilize `setListaPedidos` para atualizar o estado com a nova lista filtrada.
+// Exemplo: `setListaPedidos(listaAux);`
+import { useState } from "react";
+import Header from './components/Header';
+import Footer from './components/Footer';
+
+
+export default function Home() {
+    const [listaProdutos, setProdutos] = useState([
+      { id: 1, nome: 'Manga', preco: 'R$ 70,00' },
+      { id: 2, nome: 'Manwa', preco: 'R$ 80,00' },
+      { id: 3, nome: 'Anime', preco: 'R$ 50,00' }
+    ]);
+
+    const [listaPedidos, setListaPedidos] = useState([]);
+
+    const adicionarItemPedidos = (objeto) => {
+        setListaPedidos([...listaPedidos, objeto]);
+    };
+
+    const removerPedidos = (id) => {
+        let remover = false;
+        const listaAux = listaPedidos.filter((produto) => {
+            if (!remover && produto.id === id) {
+                remover = true;
+                return false;
+            }
+            return true;
+        });
+        setListaPedidos(listaAux);
+    };
+
+    return (
+        <div>
+            <Header title="Remover dos Meus Favoritos"/>
+            <h1>Animes</h1>
+            <h2>Meus favoritos</h2>
+            {
+                listaProdutos.map(produto => (
+                    <div key={produto.id}>
+                        <p>{produto.nome}</p>
+                        <p>{produto.preco}</p>
+                        <button onClick={() => adicionarItemPedidos(produto)}>Adicionar aos Meus Favoritos</button>
+                    </div>
+                ))
+            }
+            <h2>Meus favoritos</h2>
+            {
+                listaPedidos.map((produto, index) => (
+                    <div key={index}>
+                        <p>{produto.nome}</p>
+                        <p>{produto.preco}</p>
+                        <button onClick={() => removerPedidos(produto.id)}>Remover</button>
+                    </div>
+                ))
+            }
+            <Footer desenvolvedor="Henrique Takume" />
+        </div>
+    );
+}

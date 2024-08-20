@@ -43,6 +43,9 @@ export default function Home() {
                           <p>Meus Favoritos</p>
                           {listaPedidos.map((pedido, index) => 
                               <div key={index}>
+                                <td>
+                                     {pedido.nome}
+                                     </td>
                                   <td>
                                     {pedido.item}
                                     </td>
